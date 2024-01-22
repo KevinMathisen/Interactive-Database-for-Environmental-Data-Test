@@ -1,0 +1,19 @@
+name: Update Server
+
+on:
+  push:
+    branches:
+      - main  # or your branch name
+
+jobs:
+  update-server:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Update Server
+      run: |
+        # Run the update script on your server via SSH
+        ssh user@your-server-ip 'bash -s' < update.sh
