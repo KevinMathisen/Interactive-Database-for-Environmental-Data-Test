@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - main  # or your branch name
-      - developer
-
+      - developer # or your branch name
 jobs:
   update-server:
     runs-on: ubuntu-latest
