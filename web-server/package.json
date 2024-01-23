@@ -1,0 +1,14 @@
+{
+  "name": "web-server",
+  "version": "0.0.1",
+  "description": "Web server running on node.js using express",
+  "main": "src/app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}
