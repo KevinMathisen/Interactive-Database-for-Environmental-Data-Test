@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    display: grid;
+    grid-template-areas:
+            "header header header"
+            "leftSide main rightSide"
+            "footer footer footer";
+    grid-template-rows: 80px 1fr 35px;
+    grid-template-columns: 300px 1fr 300px;
+    min-height: 100vh; /* Ensure the body takes at least the full viewport height */
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.5rem;
+ }
+
+
+/* ----------------- HEADER -----------------*/
+header {
+    grid-area: header;
+    /*background-image: url(img/headerImg.png);
+    background-size: cover; */
+    background-image: linear-gradient(to top, #54b368, #066309);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.logo {
+    display:flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.headerStyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerStyle:hover {
+    background-color: #54b368;
+    height: 100%;
+}
+
+.emptyBar {
+    flex-grow:5;
+}
+
+header > :nth-child(3), header > :nth-child(4), header > :nth-child(5), header > :nth-child(6) {
+    margin: 0 2rem 0 2rem;
+    padding: 0 0.5rem 0 0.5rem;
+}
+
+.info {
+    padding-right: 0.5rem;
+    font-size:2rem;
+}
+
+
+/* ----------------- FOOTER ----------------- */
+
+footer {
+    grid-area: footer;
+    background-image: linear-gradient(to bottom, #54b368, #066309);    
+}
+
+.footerContent {
+    display:flex;
+    justify-content: center;
+    align-content: center;
+}
+
+/* ----------------- FORMS ----------------- */
+
+.leftSide {
+    grid-area: leftSide;
+    background-color: rgb(189, 217, 217);
+    border-right: 5px solid black;
+    border-radius: 0 1rem 1rem 0;
+}
+
+.formStyle {
+    padding-left: 1rem;
+}
+
+/* ----------------- STATS ----------------- */
+
+.rightSide {
+    grid-area: rightSide;
+    background-color: rgb(189, 217, 217);
+    border-left: 5px solid black;
+    border-radius: 1rem 0 0 1rem;
+}
+
+/* ----------------- MAP ----------------- */
+
+.middle {
+    grid-area: main;
+    text-align: center;
+    
+}
