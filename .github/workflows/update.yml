@@ -26,4 +26,4 @@ jobs:
     - name: Update Server
       run: |
         # Run the update script on your server via SSH
-        ssh ubuntu@129.241.150.249 'bash -s' < Interactive-Database-for-Environmental-Data-Test/scripts/update.sh
+        ssh ubuntu@129.241.150.249 'bash -s' < /home/ubuntu/Interactive-Database-for-Environmental-Data-Test/scripts/update.sh
