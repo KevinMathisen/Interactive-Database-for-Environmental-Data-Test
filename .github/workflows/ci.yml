@@ -14,7 +14,7 @@ on:
       - developer
     paths:
       - 'web-server/**'
-      - 'api-server/**'   
+      - 'api-server/**'
   workflow_dispatch:
 
 jobs:
@@ -60,8 +60,12 @@ jobs:
       run: npm install
       working-directory: ./web-server
 
+    - name: Auto-fix linting issues
+      run: npm run lint -- --fix
+      working-directory: ./web-server
+
     - name: Run Linter
-      run: npx standard -v
+      run: npm run lint
       working-directory: ./web-server
 
   lint-api-server:
@@ -75,6 +79,10 @@ jobs:
       run: npm install
       working-directory: ./api-server
 
+    - name: Auto-fix linting issues
+      run: npm run lint -- --fix
+      working-directory: ./api-server
+
     - name: Run Linter
-      run: npx standard -v
+      run: npm run lint
       working-directory: ./api-server
