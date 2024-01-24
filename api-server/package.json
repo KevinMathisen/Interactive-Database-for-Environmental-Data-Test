@@ -20,7 +20,21 @@
     "standard": "^16.0.3",
     "prettier": "^2.4.1"
   },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "standard": {
+    "env": [
+      "mocha",
+      "commonjs",
+      "node",
+      "jest"
+    ]
+  }, 
   "keywords": ["node", "express", "javascript"],
   "author": "",
   "license": "MIT"
-}
+} 
