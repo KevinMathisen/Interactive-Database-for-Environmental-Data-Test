@@ -5,6 +5,10 @@ on:
     branches:
       - main
       - developer
+  push:
+    branches:
+      - main
+      - developer
 
 defaults:
   run:
