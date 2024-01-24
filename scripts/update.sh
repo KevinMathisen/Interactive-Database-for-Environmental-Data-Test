@@ -7,5 +7,5 @@ cd /home/ubuntu/Interactive-Database-for-Environmental-Data-Test
 git pull origin main
 
 #chmod +x ./scripts/update.sh
-
+# -
 # Restart your web server or perform any other necessary actions
