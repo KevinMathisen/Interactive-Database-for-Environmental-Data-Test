@@ -14,7 +14,8 @@ on:
       - developer
     paths:
       - 'web-server/**'
-      - 'api-server/**'
+      - 'api-server/**'   
+  workflow_dispatch:
 
 jobs:
 
