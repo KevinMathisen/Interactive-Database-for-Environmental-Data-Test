@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Navigate to the website directory
-cd ..
+cd /home/ubuntu/Interactive-Database-for-Environmental-Data-Test
 
 # Pull the latest changes from the GitHub repository
 git pull origin main
