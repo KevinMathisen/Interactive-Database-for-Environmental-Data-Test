@@ -1,4 +1,4 @@
-const River = require('../models/River');
+const River = require('../models/river');
 
 // Sample data
 const rivers = [

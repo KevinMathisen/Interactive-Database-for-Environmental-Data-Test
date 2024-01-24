@@ -1,4 +1,4 @@
-const Observation = require('../models/Observation');
+const Observation = require('../models/observation');
 
 // Sample data
 const observations = [
