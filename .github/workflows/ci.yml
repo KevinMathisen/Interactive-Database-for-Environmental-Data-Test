@@ -44,18 +44,9 @@ jobs:
         name: "Checkout repository"
       
       - name: "Run linter"
-        run: npx standard -v
+        run: npm run lint
         working-directory: ${{ matrix.dir }}
-
-  prettier:
-    name: "Run prettify"
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        directory: ['web-server', 'api-server']
-    steps:
-      - uses: actions/checkout@v3
 
       - name: "Run prettify"
         run: npm run prettify
-        working-directory: ${{ matrix.directory }}
+        working-directory: ${{ matrix.dir }}
