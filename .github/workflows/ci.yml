@@ -44,7 +44,7 @@ jobs:
       working-directory: ./web-server
 
     - name: Auto-fix linting issues and prettify
-      run: npm run lint -- --fix && npm run prettify -- --write
+      run: npm run lint -- --fix && npm run prettify
       working-directory: ./web-server
 
     - name: Run Linter
