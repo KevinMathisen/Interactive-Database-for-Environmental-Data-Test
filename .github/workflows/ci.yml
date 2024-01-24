@@ -68,6 +68,10 @@ jobs:
         run: npm run prettify
         working-directory: ./web-server
 
+      - name: Prettify HTML code
+        run: npm run prettify-html
+        working-directory: ./web-server
+
   test-api-server:
     name: 'Run unit tests for api-server'
     runs-on: ubuntu-latest
@@ -115,4 +119,8 @@ jobs:
 
       - name: Prettify code
         run: npm run prettify
+        working-directory: ./api-server
+
+      - name: Prettify HTML code
+        run: npm run prettify-html
         working-directory: ./api-server
