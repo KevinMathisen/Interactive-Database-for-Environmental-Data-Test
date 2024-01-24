@@ -98,4 +98,4 @@ jobs:
         run: npm install --global prettier
 
       - name: Prettify web-server and api-server code
-        run: prettier --write 'web-server/**/*.js' 'api-server/**/*.js' 'web-server/**/*.md' 'api-server/**/*.md'
+        run: prettier --write 'web-server/**/*.js' 'api-server/**/*.js'
