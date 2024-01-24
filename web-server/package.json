@@ -19,7 +19,7 @@
   "devDependencies": {
     "jest": "27.0.0",
     "standard": "^16.0.3",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
     "prettier-plugin-html": "^0.15.3"
   },
   "jest": {
