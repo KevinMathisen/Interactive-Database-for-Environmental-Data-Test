@@ -53,25 +53,6 @@ jobs:
         run: npm run lint
         working-directory: ./web-server
 
- # prettify-web-server:
-   # name: 'Prettify code for web-server'
-  #  runs-on: ubuntu-latest
-  #  steps:
-   #   - name: Checkout repository
-    #    uses: actions/checkout@v3
-
-     # - name: Install Dependencies
-     #   run: npm install
-      #  working-directory: ./web-server
-
-     # - name: Prettify code
-    #    run: npm run prettify
-      #  working-directory: ./web-server
-
-     # - name: Prettify HTML code
-      #  run: npm run prettify-html
-      #  working-directory: ./web-server
-
   test-api-server:
     name: 'Run unit tests for api-server'
     runs-on: ubuntu-latest
@@ -106,21 +87,15 @@ jobs:
         run: npm run lint
         working-directory: ./api-server
 
-#  prettify-api-server:
-   # name: 'Prettify code for api-server'
-    #runs-on: ubuntu-latest
-   # steps:
-    #  - name: Checkout repository
-     #   uses: actions/checkout@v3
+  prettify-code:
+    name: 'Prettify code for web-server and api-server'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-     # - name: Install Dependencies
-      #  run: npm install
-      #  working-directory: ./api-server
+      - name: Install Prettier
+        run: npm install --global prettier
 
-    #  - name: Prettify code
-     #   run: npm run prettify
-      #  working-directory: ./api-server
-
-    #  - name: Prettify HTML code
-     #   run: npm run prettify-html
-       # working-directory: ./api-server
+      - name: Prettify web-server and api-server code
+        run: prettier --write 'web-server/**/*.js' 'api-server/**/*.js' 'web-server/**/*.md' 'api-server/**/*.md'
