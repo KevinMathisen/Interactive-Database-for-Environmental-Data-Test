@@ -11,9 +11,9 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Update Server
       run: |
         # Run the update script on your server via SSH
-        ssh user@your-server-ip 'bash -s' < update.sh
+        ssh ubuntu@129.241.150.249 'bash -s' < update.sh
