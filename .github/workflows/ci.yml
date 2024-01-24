@@ -7,14 +7,12 @@ on:
       - developer
     paths:
       - 'web-server/**'
-      - 'api-server/**'
   push:
     branches:
       - main
       - developer
     paths:
       - 'web-server/**'
-      - 'api-server/**'
   workflow_dispatch:
 
 jobs:
@@ -24,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Install Dependencies
       run: npm install
@@ -33,56 +31,22 @@ jobs:
     - name: Run Tests
       run: npm run test
       working-directory: ./web-server
-
-  test-api-server:
-    name: 'Run unit tests for api-server'
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Install Dependencies
-      run: npm install
-      working-directory: ./api-server
-
-    - name: Run Tests
-      run: npm run test
-      working-directory: ./api-server
 
   lint-web-server:
-    name: 'Run linter for web-server'
+    name: 'Run linter and prettify for web-server'
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Install Dependencies
       run: npm install
       working-directory: ./web-server
 
-    - name: Auto-fix linting issues
-      run: npm run lint -- --fix
+    - name: Auto-fix linting issues and prettify
+      run: npm run lint -- --fix && npm run prettify -- --write
       working-directory: ./web-server
 
     - name: Run Linter
       run: npm run lint
       working-directory: ./web-server
-
-  lint-api-server:
-    name: 'Run linter for api-server'
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Install Dependencies
-      run: npm install
-      working-directory: ./api-server
-
-    - name: Auto-fix linting issues
-      run: npm run lint -- --fix
-      working-directory: ./api-server
-
-    - name: Run Linter
-      run: npm run lint
-      working-directory: ./api-server
