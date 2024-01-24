@@ -13,14 +13,14 @@ on:
 defaults:
   run:
     shell: bash
+  strategy:
+    matrix:
+      dir: ['web-server', 'api-server']
 
 jobs:
   test:
     name: "Run unit tests"
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        dir: ['web-server', 'api-server']
     steps:
       - uses: actions/checkout@v3
         name: "Checkout repository"
@@ -36,9 +36,6 @@ jobs:
   lint:
     name: "Run linter"
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        directory: ['web-server', 'api-server']
     steps:
       - uses: actions/checkout@v3
         name: "Checkout repository"
@@ -47,6 +44,12 @@ jobs:
         run: npx standard -v
         working-directory: ${{ matrix.dir }}
 
-      - name: Run prettify
+  prettier:
+    name: "Run prettify"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: "Run prettify"
         run: npm run prettify
-        working-directory: ${{ matrix.dir}}
+        working-directory: ${{ matrix.dir }}
