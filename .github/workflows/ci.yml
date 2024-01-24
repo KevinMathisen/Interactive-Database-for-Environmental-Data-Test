@@ -16,42 +16,62 @@ on:
 
 jobs:
 
-  test:
-    name: 'Run unit tests'
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./${{ matrix.dir }}
+  test-web-server:
+    name: 'Run unit tests for web-server'
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        dir: ['web-server', 'api-server']
     steps:
-    - uses: actions/checkout@v2
-      name: 'Checkout repository'
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-    - name: 'Install Dependencies'
+    - name: Install Dependencies
       run: npm install
-    
-    - name: 'Run Tests'
+      working-directory: ./web-server
+
+    - name: Run Tests
       run: npm run test
+      working-directory: ./web-server
 
-  lint:
-    name: 'Run linter'
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./${{ matrix.dir }}
+  test-api-server:
+    name: 'Run unit tests for api-server'
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        dir: ['web-server', 'api-server']
-    steps:    
-    - uses: actions/checkout@v2
-      name: 'Checkout repository'
-    
-    - name: 'Install Dependencies'
-      run: npm install
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-    - name: 'Run Linter'
+    - name: Install Dependencies
+      run: npm install
+      working-directory: ./api-server
+
+    - name: Run Tests
+      run: npm run test
+      working-directory: ./api-server
+
+  lint-web-server:
+    name: 'Run linter for web-server'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: npm install
+      working-directory: ./web-server
+
+    - name: Run Linter
       run: npx standard -v
+      working-directory: ./web-server
+
+  lint-api-server:
+    name: 'Run linter for api-server'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: npm install
+      working-directory: ./api-server
+
+    - name: Run Linter
+      run: npx standard -v
+      working-directory: ./api-server
