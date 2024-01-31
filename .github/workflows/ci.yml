@@ -3,16 +3,18 @@ name: Continuous Integration Workflow
 on:
   pull_request:
     branches:
-      - 'feature/*'
+      - '*'
+      - '!main'
+      - '!developer'
     paths:
       - 'web-server/**'
-      # - 'api-server/**' # Commented out to exclude 'api-server' changes from the workflow
   push:
     branches:
-      - 'feature/*'
+      - '*'
+      - '!main'
+      - '!developer'
     paths:
       - 'web-server/**'
-      # - 'api-server/**' # Commented out to exclude 'api-server' changes from the workflow
   workflow_dispatch:
 
 jobs:
