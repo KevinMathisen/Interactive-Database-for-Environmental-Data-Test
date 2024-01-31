@@ -79,13 +79,13 @@ jobs:
       - name: Commit changes
         if: steps.git-check.outputs.changed == 'true'
         run: |
-          # Use a unique branch name with the current timestamp and GitHub actor's name
-          git checkout -b prettify-${{ github.actor }}-$(date +%Y%m%d%H%M%S)
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git commit -am "Apply Prettier formatting"
-          git push origin prettify-${{ github.actor }}-$(date +%Y%m%d%H%M%S)
-        working-directory: ./web-server
+          git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        working-directory: ./web-server
 
 
 
