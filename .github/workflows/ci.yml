@@ -77,8 +77,9 @@ jobs:
           git config --global user.email 'carlpm@stud.ntnu.no'
           git add -A
           git diff --staged --quiet || git commit -m "Prettify JS code"
-          git push
+          git push origin prettify-${{ github.head_ref }} --set-upstream
         working-directory: ./web-server
+      
 
   test-api-server:
     name: 'Run unit tests for api-server'
