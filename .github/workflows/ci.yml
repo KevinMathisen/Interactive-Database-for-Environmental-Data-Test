@@ -33,7 +33,7 @@ jobs:
       - name: Run Tests
         run: npm run test
         working-directory: ./web-server
-
+        
   lint-web-server:
     name: 'Lint code for web-server'
     runs-on: ubuntu-latest
@@ -49,9 +49,23 @@ jobs:
         run: npm run lint -- --fix
         working-directory: ./web-server
 
-      - name: Run Linter
-        run: npm run lint
+      - name: Check if there are linting changes
+        id: git-check-lint
+        run: |
+          git diff --exit-code || echo "::set-output name=changed::true"
         working-directory: ./web-server
+
+      - name: Commit linting changes
+        if: steps.git-check-lint.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -am "Apply lint fixes"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        working-directory: ./web-server
+        
         
   prettify-web-server:
     name: 'Prettify code for web-server'
@@ -60,33 +74,4 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Ensures all branches and tags are fetched
-
-      - name: Install Dependencies
-        run: npm install
-        working-directory: ./web-server
-
-      - name: Prettify code
-        run: npm run prettify
-        working-directory: ./web-server
-
-      - name: Check if there are changes
-        id: git-check
-        run: |
-          git diff --exit-code || echo "::set-output name=changed::true"
-        working-directory: ./web-server
-
-      - name: Commit changes
-        if: steps.git-check.outputs.changed == 'true'
-        run: |
-          git config --local user.email "carlpettermr@gmail.com"
-          git config --local user.name "carlpm"
-          git commit -am "Apply Prettier formatting"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        working-directory: ./web-server
-
-
-
-# Commented out the 'api-server' related jobs
+    
