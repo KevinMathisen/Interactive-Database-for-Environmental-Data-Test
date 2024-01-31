@@ -72,6 +72,7 @@ jobs:
   prettify-web-server:
     name: 'Prettify code for web-server'
     runs-on: ubuntu-latest
+    needs: lint-web-server  
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
