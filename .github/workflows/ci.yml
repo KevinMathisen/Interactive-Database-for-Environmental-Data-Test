@@ -75,9 +75,11 @@ jobs:
         run: |
           git config --global user.name 'carlpm'
           git config --global user.email 'carlpm@stud.ntnu.no'
+          branch_name="prettify-${{ github.head_ref }}"
+          git checkout -b "$branch_name"
           git add -A
           git diff --staged --quiet || git commit -m "Prettify JS code"
-          git push origin prettify-${{ github.head_ref }} --set-upstream
+          git push origin "$branch_name"
         working-directory: ./web-server
       
 
