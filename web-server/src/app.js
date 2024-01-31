@@ -18,6 +18,10 @@ app.get('/', (req, res) => {
 // comment
 });
 
+app.get('/graph', (req, res) => {
+  res.sendFile('graph.html', { root: path.join(__dirname, 'views') });
+});
+
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
   const err = new Error('Not Found');
