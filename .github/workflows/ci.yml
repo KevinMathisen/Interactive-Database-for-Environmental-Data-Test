@@ -59,9 +59,9 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3  # Use v2 version of actions/checkout
+        uses: actions/checkout@v3
         with:
-          ref: ${{ github.head_ref }}
+          ref: main
           fetch-depth: 0
 
       - name: Install Dependencies
@@ -85,6 +85,8 @@ jobs:
           git diff --staged --quiet || git commit -m "Prettify JS code"
           git push origin main
         working-directory: ./web-server
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
 
   test-api-server:
