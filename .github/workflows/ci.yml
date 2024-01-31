@@ -82,6 +82,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
         working-directory: ./web-server
+        
+      - name: Pull latest changes
+        run: |
+          git pull origin ${GITHUB_REF#refs/heads/} --rebase
+        working-directory: ./web-server
 
       - name: Prettify code
         run: npm run prettify
