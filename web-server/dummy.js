@@ -1,3 +1,9 @@
-function   greet(  name){console.log(  'Hello, '  + name);}
-if(    true){
-console.log('This is some poorly formatted code.');}
+// Example of code with linting issues
+function calculateSum(num1, num2) {
+  var result = num1 + num2;
+  return result;
+}
+
+var total = calculateSum(5, 10);
+console.log("Total is: " + total);
+
