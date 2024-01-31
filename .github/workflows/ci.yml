@@ -56,12 +56,13 @@ jobs:
   prettify-web-server:
     name: 'Prettify code for web-server'
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3  # Use v2 version of actions/checkout
         with:
-          ref: ${{ github.head_ref }} # This will checkout the branch of the pull request
-          fetch-depth: 0 # This will ensure all history is fetched
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
 
       - name: Install Dependencies
         run: npm install
@@ -71,12 +72,18 @@ jobs:
         run: npm run prettify
         working-directory: ./web-server
 
+      - name: Set Git user identity
+        run: |
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
+        shell: bash
+
       - name: Commit and push changes
         run: |
-          git checkout -b prettify-${{ github.head_ref }}
+          git checkout main
           git add -A
           git diff --staged --quiet || git commit -m "Prettify JS code"
-          git push origin HEAD:${{ github.head_ref }}
+          git push origin main
         working-directory: ./web-server
       
 
