@@ -7,14 +7,14 @@ on:
       - developer
     paths:
       - 'web-server/**'
-      - 'api-server/**'
+      # - 'api-server/**' # Commented out to exclude 'api-server' changes from the workflow
   push:
     branches:
       - main
       - developer
     paths:
       - 'web-server/**'
-      - 'api-server/**'
+      # - 'api-server/**' # Commented out to exclude 'api-server' changes from the workflow
   workflow_dispatch:
 
 jobs:
@@ -33,7 +33,7 @@ jobs:
       - name: Run Tests
         run: npm run test
         working-directory: ./web-server
-
+        
   lint-web-server:
     name: 'Lint code for web-server'
     runs-on: ubuntu-latest
@@ -49,16 +49,32 @@ jobs:
         run: npm run lint -- --fix
         working-directory: ./web-server
 
-      - name: Run Linter
-        run: npm run lint
+      - name: Check if there are linting changes
+        id: git-check-lint
+        run: |
+          git diff --exit-code || echo "::set-output name=changed::true"
         working-directory: ./web-server
 
+      - name: Commit linting changes
+        if: steps.git-check-lint.outputs.changed == 'true'
+        run: |
+          git config --local user.email "carlpettermr@gmail.com"
+          git config --local user.name "carlpm"
+          git commit -am "Apply lint fixes"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        working-directory: ./web-server
+        
+        
   prettify-web-server:
     name: 'Prettify code for web-server'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensures all branches and tags are fetched
 
       - name: Install Dependencies
         run: npm install
@@ -68,51 +84,21 @@ jobs:
         run: npm run prettify
         working-directory: ./web-server
 
-  test-api-server:
-    name: 'Run unit tests for api-server'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Check if there are changes
+        id: git-check
+        run: |
+          git diff --exit-code || echo "::set-output name=changed::true"
+        working-directory: ./web-server
 
-      - name: Install Dependencies
-        run: npm install
-        working-directory: ./api-server
+      - name: Commit changes
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config --local user.email "carlpettermr@gmail.com"
+          git config --local user.name "carlpm"
+          git commit -am "Apply Prettier formatting"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        working-directory: ./web-server
 
-      - name: Run Tests
-        run: npm run test
-        working-directory: ./api-server
-
-  lint-api-server:
-    name: 'Lint code for api-server'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Install Dependencies
-        run: npm install
-        working-directory: ./api-server
-
-      - name: Auto-fix linting issues
-        run: npm run lint -- --fix
-        working-directory: ./api-server
-
-      - name: Run Linter
-        run: npm run lint
-        working-directory: ./api-server
-
-  prettify-api-server:
-    name: 'Prettify code for api-server'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Install Dependencies
-        run: npm install
-        working-directory: ./api-server
-
-      - name: Prettify code
-        run: npm run prettify
-        working-directory: ./api-server
+# Commented out the 'api-server' related jobs
