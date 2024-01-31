@@ -47,6 +47,11 @@ jobs:
         run: npm install
         working-directory: ./web-server
 
+      - name: Pull latest changes
+        run: |
+          git pull origin ${GITHUB_REF#refs/heads/} --rebase
+        working-directory: ./web-server
+
       - name: Auto-fix linting issues
         run: npm run lint -- --fix
         working-directory: ./web-server
