@@ -58,10 +58,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3  # Use v2 for better compatibility
+        uses: actions/checkout@v3
         with:
-          ref: main
-          fetch-depth: 0  # Fetch the full history to allow pushing changes
+          fetch-depth: 0  # Ensures all branches and tags are fetched
 
       - name: Install Dependencies
         run: npm install
@@ -71,22 +70,21 @@ jobs:
         run: npm run prettify
         working-directory: ./web-server
 
-      - name: Set Git user identity
+      - name: Check if there are changes
+        id: git-check
         run: |
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --global user.name "${{ github.actor }}"
-        shell: bash
-
-      - name: Commit changes
-        run: |
-          git add -A
-          git diff --staged --quiet || git commit -m "Prettify JS code"
+          git diff --exit-code || echo "::set-output name=changed::true"
         working-directory: ./web-server
 
-      - name: Push changes to main branch
-        run: git push origin HEAD:main
+      - name: Commit changes
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git checkout -b prettify/${{ github.head_ref }}
+          git commit -am "Apply Prettier formatting"
+          git push origin prettify/${{ github.head_ref }}
         working-directory: ./web-server
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
 # Commented out the 'api-server' related jobs
