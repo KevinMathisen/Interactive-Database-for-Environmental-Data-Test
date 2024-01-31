@@ -8,6 +8,15 @@
     <meta name="description" content="This website does stuff">
     <link rel="icon" href="img/icon.png" type="image/x-icon">   <!--  Links to the icon -->
     <link rel="stylesheet" href="style.css" > <!-- Links to the css file -->
+    <script defer src="script.js"></script> <!-- Links to the javascript file --> 
+            <!-- Defer means that the script will be executed after the page is loaded -->
+            <!-- Used for the map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script defer src="mapScript.js"></script>
+            <!-- Used for the charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script defer src="charts.js"></script>
 </head>
 
 <body>
@@ -29,7 +38,7 @@
         <p class="headerStyle">Export</p>
     </header>
 
-    <div class="leftSide">
+    <div class="leftSide" id="filter">
         <h2 class="formStyle">Form</h2>
         <form action="" class="filterBox">               <!-- Defines the form -->
             <fieldset>
@@ -52,13 +61,16 @@
             </fieldset>
         </form>
     </div>
+    <div class="square" id="clickButton">&lt;</div> <!-- Should probablt be using the html button tags -->
     <div class="middle">
-        <p> Map </p>
+        <div id="map" style="height: 100%;"></div>
+        <!-- <p id="dadJoke"> Map </p>--> 
     </div>
-    <div class="rightSide">
-        <p>Stats</p>
+    <div class="rightSide rightSideGone" id="afsidg">
+        <p id="removeThis">Stats</p>
+        <a href="stats.html" target="_blank">INFO</a>
+        <div id="chart_div"></div>
     </div>
-
     <footer>
         <div class="footerContent">© Martin Glærum 2024</div>
     </footer>
