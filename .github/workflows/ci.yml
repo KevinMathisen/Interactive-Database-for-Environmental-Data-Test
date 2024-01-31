@@ -53,89 +53,40 @@ jobs:
         run: npm run lint
         working-directory: ./web-server
 
-prettify-web-server:
-  name: 'Prettify code for web-server'
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3  # Use v2 for better compatibility
-      with:
-        ref: main
-        fetch-depth: 0  # Fetch the full history to allow pushing changes
+  prettify-web-server:
+    name: 'Prettify code for web-server'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  # Use v2 for better compatibility
+        with:
+          ref: main
+          fetch-depth: 0  # Fetch the full history to allow pushing changes
 
-    - name: Install Dependencies
-      run: npm install
-      working-directory: ./web-server
+      - name: Install Dependencies
+        run: npm install
+        working-directory: ./web-server
 
-    - name: Prettify code
-      run: npm run prettify
-      working-directory: ./web-server
+      - name: Prettify code
+        run: npm run prettify
+        working-directory: ./web-server
 
-    - name: Set Git user identity
-      run: |
-        git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-        git config --global user.name "${{ github.actor }}"
-      shell: bash
+      - name: Set Git user identity
+        run: |
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
+        shell: bash
 
-    - name: Commit changes
-      run: |
-        git add -A
-        git diff --staged --quiet || git commit -m "Prettify JS code"
-      working-directory: ./web-server
+      - name: Commit changes
+        run: |
+          git add -A
+          git diff --staged --quiet || git commit -m "Prettify JS code"
+        working-directory: ./web-server
 
-    - name: Push changes to main branch
-      run: git push origin HEAD:main
-      working-directory: ./web-server
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push changes to main branch
+        run: git push origin HEAD:main
+        working-directory: ./web-server
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 # Commented out the 'api-server' related jobs
-
-# test-api-server:
-#   name: 'Run unit tests for api-server'
-#   runs-on: ubuntu-latest
-#   steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v3
-
-#     - name: Install Dependencies
-#       run: npm install
-#       working-directory: ./api-server
-
-#     - name: Run Tests
-#       run: npm run test
-#       working-directory: ./api-server
-
-# lint-api-server:
-#   name: 'Lint code for api-server'
-#   runs-on: ubuntu-latest
-#   steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v3
-
-#     - name: Install Dependencies
-#       run: npm install
-#       working-directory: ./api-server
-
-#     - name: Auto-fix linting issues
-#       run: npm run lint -- --fix
-#       working-directory: ./api-server
-
-#     - name: Run Linter
-#       run: npm run lint
-#       working-directory: ./api-server
-
-# prettify-api-server:
-#   name: 'Prettify code for api-server'
-#   runs-on: ubuntu-latest
-#   steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v3
-
-#     - name: Install Dependencies
-#       run: npm install
-#       working-directory: ./api-server
-
-#     - name: Prettify code
-#       run: npm run prettify
-#       working-directory: ./api-server
