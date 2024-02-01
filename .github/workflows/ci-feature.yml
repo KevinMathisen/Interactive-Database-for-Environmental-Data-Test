@@ -3,14 +3,12 @@ name: Continuous Integration Workflow (FEATURE)
 on:
   pull_request:
     branches:
-      - '*'
       - '!main'
       - '!developer'
     paths:
       - 'web-server/**'
   push:
     branches:
-      - '*'
       - '!main'
       - '!developer'
     paths:
@@ -58,9 +56,8 @@ jobs:
         - name: Commit linting changes
           if: steps.git-check-lint.outputs.changed == 'true'
           run: |
-            git config --local user.email "carlpettermr@gmail.com"
-            git config --local user.name "carlpm"
-            git commit -am "Apply lint fixes"
+            changed_files=$(git diff --name-only)
+            git commit -am "Lint fixes: $changed_files"
             git push
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -98,9 +95,8 @@ jobs:
       - name: Commit changes
         if: steps.git-check.outputs.changed == 'true'
         run: |
-          git config --local user.email "carlpettermr@gmail.com"
-          git config --local user.name "carlpm"
-          git commit -am "Apply Prettier formatting"
+          changed_files=$(git diff --name-only)
+          git commit -am "Prettify fixes: $changed_files"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
