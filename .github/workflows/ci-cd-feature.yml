@@ -1,5 +1,6 @@
 name: CI/CD (FEATURE)
 
+# The workflow event listens to pull request and push requests for every branch except from main and developer branch
 on:
   pull_request:
     branches:
@@ -13,10 +14,10 @@ on:
       - '!developer'
     paths:
       - 'web-server/**'
-  workflow_dispatch:
+  workflow_dispatch: # To test the code manually
 
+# Jobs executed (each job has its own runner)
 jobs:
-
   test-web-server:
     name: 'Run unit tests for web-server'
     runs-on: ubuntu-latest
