@@ -1,4 +1,4 @@
-name: Continuous Integration Workflow (FEATURE)
+name: CI/CD (FEATURE)
 
 on:
   pull_request:
