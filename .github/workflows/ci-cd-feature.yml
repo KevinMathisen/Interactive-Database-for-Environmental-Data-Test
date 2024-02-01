@@ -60,7 +60,7 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git config user.name "github-actions[bot]"
             changed_files=$(git diff --name-only)
-            git commit -am "Lint fixes: $changed_files"
+            git commit -am "style: lint fix $changed_files"
             git push
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -101,7 +101,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
           changed_files=$(git diff --name-only)
-          git commit -am "Prettify fixes: $changed_files"
+          git commit -am "style: prettify fix $changed_files"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
