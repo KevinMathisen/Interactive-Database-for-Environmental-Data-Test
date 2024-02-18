@@ -6,12 +6,14 @@ on:
     branches:
       - '!main'
       - '!developer'
+      - 'feature/*'
     paths:
       - 'web-server/**'
   push:
     branches:
       - '!main'
       - '!developer'
+      - 'feature/*'
     paths:
       - 'web-server/**'
   workflow_dispatch: # To test the code manually
