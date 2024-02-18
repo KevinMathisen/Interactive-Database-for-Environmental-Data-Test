@@ -6,7 +6,7 @@ LABEL maintainer="Carl Petter Morch-Reiersen <carlpm.stud@ntnu.no>"
 WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json
-COPY web-server/package*.json ./
+COPY package*.json ./
 
 # Install project dependencies
 RUN npm install
@@ -15,7 +15,7 @@ RUN npm install
 # COPY ssl-certificates/ /usr/src/app/ssl-certificates/
 
 # Copy the rest of the apps source code
-COPY web-server/src .
+COPY src/ .
 
 # Expose port 3000
 EXPOSE 3000
