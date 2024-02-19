@@ -28,3 +28,8 @@ jobs:
         # Run the update script on your server via SSH
         ssh -i ~/.ssh/id_rsa ubuntu@129.241.150.249 '/home/ubuntu/Interactive-Database-for-Environmental-Data-Test/scripts/update.sh'
 
+    - name: Update Docker container instance
+      run: |
+        # Run the docker-deploy script on your server via SSH
+        ssh -i ~/.ssh/id_rsa ubuntu@129.241.150.249 '/home/ubuntu/Interactive-Database-for-Environmental-Data-Test/scripts/deployDocker.sh'
+
