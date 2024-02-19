@@ -23,13 +23,9 @@ jobs:
         ssh-keyscan 129.241.150.249 >> ~/.ssh/known_hosts
         chmod 644 ~/.ssh/known_hosts
 
-    - name: Update Server
+    - name: Update Server and Docker
       run: |
         # Run the update script on your server via SSH
         ssh -i ~/.ssh/id_rsa ubuntu@129.241.150.249 '/home/ubuntu/Interactive-Database-for-Environmental-Data-Test/scripts/update.sh'
 
-    - name: Update Docker instance
-      run: |
-        # Run the docker-deploy script on your server via SSH
-        ssh -i ~/.ssh/id_rsa ubuntu@129.241.150.249 '/home/ubuntu/Interactive-Database-for-Environmental-Data-Test/scripts/deployDocker.sh'
-
+   
