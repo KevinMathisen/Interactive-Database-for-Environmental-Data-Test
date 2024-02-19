@@ -10,6 +10,6 @@ docker rm staticwebserver:latest || true
 docker build -t "staticwebserver:latest" ./web-server
 
 # Run the Docker container
-docker run -p 3000:3000 -d staticwebserver:latest
+docker run --restart=always -p 3000:3000 -d staticwebserver:latest
 
 echo "Static web server started successfully."
