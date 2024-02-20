@@ -1,26 +1,27 @@
-name: Continuous Integration Workflow (FEATURE)
+name: CI/CD (FEATURE)
 
+# The workflow event listens to pull request and push requests for every branch except from main and developer branch
 on:
   pull_request:
     branches:
-      - '*'
       - '!main'
       - '!developer'
+      - 'feature/*'
     paths:
       - 'web-server/**'
   push:
     branches:
-      - '*'
       - '!main'
       - '!developer'
+      - 'feature/*'
     paths:
       - 'web-server/**'
-  workflow_dispatch:
+  workflow_dispatch: # To test the code manually
 
+# Jobs executed (each job has its own runner)
 jobs:
-
-  test-web-server:
-    name: 'Run unit tests for web-server'
+  test-web-server: 
+    name: 'Run unit tests for web-server' # Runs unit tests found in the test directory
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -31,11 +32,11 @@ jobs:
         working-directory: ./web-server
 
       - name: Run Tests
-        run: npm run test
+        run: npm run test # Calls a script called test from package.json
         working-directory: ./web-server
         
   lint-web-server:
-      name: 'Lint code for web-server'
+      name: 'Lint code for web-server' # Checks linting issues and fixes them
       runs-on: ubuntu-latest
       steps:
         - name: Checkout repository
@@ -46,28 +47,29 @@ jobs:
           working-directory: ./web-server
   
         - name: Auto-fix linting issues
-          run: npm run lint -- --fix
+          run: npm run lint -- --fix # Calls a script called lint from package.json
           working-directory: ./web-server
   
-        - name: Check if there are linting changes
+        - name: Check if there are linting changes # Checks if any files are modified
           id: git-check-lint
           run: |
             git diff --exit-code || echo "::set-output name=changed::true"
           working-directory: ./web-server
   
-        - name: Commit linting changes
+        - name: Commit linting changes # Allows the bot/workflow to apply the changes and commit to the repository
           if: steps.git-check-lint.outputs.changed == 'true'
           run: |
-            git config --local user.email "carlpettermr@gmail.com"
-            git config --local user.name "carlpm"
-            git commit -am "Apply lint fixes"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git config user.name "github-actions[bot]"
+            changed_files=$(git diff --name-only)
+            git commit -am "style: lint fix $changed_files"
             git push
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           working-directory: ./web-server
         
   prettify-web-server:
-    name: 'Prettify code for web-server'
+    name: 'Prettify code for web-server' # Cheks prettify issues and beautifies code following the StandardJS coding convention
     runs-on: ubuntu-latest
     needs: lint-web-server
     steps:
@@ -86,21 +88,22 @@ jobs:
         working-directory: ./web-server
   
       - name: Prettify code
-        run: npm run prettify
+        run: npm run prettify # Calls a script called prettify from package.json
         working-directory: ./web-server
   
-      - name: Check if there are changes
+      - name: Check if there are changes # Checks if any files are modified
         id: git-check
         run: |
           git diff --exit-code || echo "::set-output name=changed::true"
         working-directory: ./web-server
   
-      - name: Commit changes
+      - name: Commit changes # Allows the bot/workflow to apply the changes and commit to the repository
         if: steps.git-check.outputs.changed == 'true'
         run: |
-          git config --local user.email "carlpettermr@gmail.com"
-          git config --local user.name "carlpm"
-          git commit -am "Apply Prettier formatting"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          changed_files=$(git diff --name-only)
+          git commit -am "style: prettify fix $changed_files"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

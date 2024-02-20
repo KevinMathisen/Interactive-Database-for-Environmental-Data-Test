@@ -1,0 +1,110 @@
+/* ----------------- VARIABLES -----------------*/
+
+:root {
+    --MCOLOR: #435768;  /* Main color */
+    --SCOLOR: white;    /* Secondary color */
+}
+
+/* ----------------- FILTERMENU -----------------*/
+
+.listFilter {
+    position: fixed;
+    width: 300px;
+    height: calc(100vh - 80px);         /* Height of the page subtracted by height of the header*/
+    top: 80px;                          /* Positions the menu under the header */
+    background-color: var(--SCOLOR);
+    border-right: 5px solid black;
+}
+
+.listFilterHeader {
+    height: 60px;
+    font-size: 2.5rem;
+    font-weight: 540;
+}
+
+.listFilterDataContainer {
+    font-size: 1.2rem;
+    padding: 0 0 0.5rem 1rem;
+}
+
+/* ----------------- SEARCHFIELD -----------------*/
+
+#listSearchField {
+    padding-left: 500px;
+    padding-top: 15px;
+}
+
+#listSearchBottomText {
+    padding-top: 5px;
+}
+
+input[type="search"] {
+    width: 600px; 
+    height: 45px;
+    padding: 8px; 
+    border: 1px solid black; 
+    border-radius: 10px; 
+    background-color: #ebebeb;     /* Color for the searchfield */
+    outline: none; 
+    font-size: 16px; 
+    color: #000000;
+}
+
+/* ----------------- TABLE -----------------*/
+
+#listTable {
+    padding-left: 450px;
+    padding-top: 30px;
+}
+
+table {
+    border-collapse: collapse;   /* Used to avoid all borders being double-lined */
+    font-size: 1.2rem;
+}
+
+th {
+    border-bottom: 1px solid black;
+    padding: 8px;
+    text-align: center;
+    background-color: #bdbcbc;  /* Color for the searchfield */
+}
+
+
+    /* Defines the width of each column in the table */
+th:nth-child(1), td:nth-child(1) {
+    width: 500px;
+}
+th:nth-child(2), td:nth-child(2) {
+    width: 150px;
+}
+th:nth-child(3), td:nth-child(3) {
+    width: 200px;
+}
+th:nth-child(4), td:nth-child(4) {
+    width: 300px;
+}
+
+
+td {
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;  /* Color for the even numbered rows */
+}
+
+
+/* ----------------- OTHER -----------------*/
+
+h3 {
+    color: var(--MCOLOR);
+    font-size: 1.5rem;
+    font-family: "Inter", sans-serif;
+    padding-left: 1rem;
+}
+
+.listSetWidthForButtons {
+    width: 120px;
+    display: inline-block;
+}

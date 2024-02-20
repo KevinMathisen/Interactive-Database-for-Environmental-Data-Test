@@ -5,7 +5,7 @@ var map = L.map('map', {
 });
 
 var redIcon = L.icon({
-  iconUrl: 'img/circle.svg',
+  iconUrl: '../img/circle.svg',
   //shadowUrl: 'img/icon.png',
 
   iconSize:     [15, 15], // size of the icon

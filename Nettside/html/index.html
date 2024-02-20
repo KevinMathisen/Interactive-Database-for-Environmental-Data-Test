@@ -1,0 +1,118 @@
+<!DOCTYPE html> <!-- Defines the document type -->
+
+<html lang="en"> <!-- Defines the language for the website --> 
+<head>                   
+    <title>NINA</title> 
+    <meta charset="utf-8"> <!-- Defines charachter set --> 
+    <meta name="author" content="Martin Glærum">
+    <meta name="description" content="This website does stuff">
+    <link rel="icon" href="../img/icon.png" type="image/x-icon">    <!-- Links to the used in the tab -->
+    <link rel="stylesheet" href="../css/styleIndex.css" >           <!-- Links to the css file for the index page -->
+    <link rel="stylesheet" href="../css/styleGeneral.css" >        <!-- Links to css file used for the header -->
+    <script defer src="../javascript/script.js"></script>           <!-- Links to default javsscript file-->
+        <!-- Links to neccesaties used to create the map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    <script defer src="../javascript/mapScript.js"></script>
+</head>
+
+
+<body>
+        <!-- Header for the website -->
+    <header>                   
+        <div class="logoHeader">
+            <img src="../img/icon.png" alt="Logo" height="60px">
+            <p>Nina</p>
+        </div>
+        <div class="centerItem">
+            <a href="index.html">Kart</a>
+            <img src="../img/mapIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="list.html">Liste</a>
+            <img src="../img/listIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="graph.html">Grafer</a>
+            <img src="../img/graphIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="upload.html">Last opp</a>
+            <img src="../img/uploadIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="dowload.html">Last ned</a>
+            <img src="../img/dowloadIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">Logg inn</div>
+    </header>
+
+        <!-- Creates the map used in the website -->
+    <div id="map"></div>    
+
+        <!-- Defines the filter options at the left side of the page -->
+    <section class="indexFilter" id="indexLeftSideFilter">
+        <div class="colorChange indexFilterHeader centerItem">Filter for Kart</div>
+
+            <!-- Defines the form for choosing elvedata or stasjonsdata -->
+        <h3>Type data</h3>
+        <form action=" ">
+            <div class="indexFilterDataContainer">
+                <div class="indexSetWidthForButtons"><label for="Stasjonsdata">Stasjonsdata</label></div>
+                <input type="radio" id="Stasjonsdata" name="color" value="Stasjonsdata">
+            </div>
+            <div class="indexFilterDataContainer">
+                <div class="indexSetWidthForButtons"><label for="Elvedata">Elvedata</label></div>
+                <input type="radio" id="Elvedata" name="color" value="Elvedata">
+            </div>            
+        </form>
+
+            <!-- Defines the form for choosing a time interval -->
+        <h3>Dato</h3>
+        <form action=" ">
+            <div class="indexFilterDataContainer">
+                <label for="FraDato">Fra</label>
+                <input type="date" id="FraDato" name="color" value="FraDato"><br>
+            </div>
+            
+            <div class="indexFilterDataContainer">
+                <label for="TilDato">Til</label>
+                <input type="date" id="TilDato" name="color" value="TilDato"><br>
+            </div>            
+        </form>
+
+            <!-- Defines the form for filtering different species of fish -->
+        <h3>Art</h3>
+        <form action=" ">
+            <div class="indexFilterDataContainer">
+                <div class="indexSetWidthForButtons"><label for="VelgAlleMenuFilter">Velg Alle</label></div>
+                <input type="radio" id="VelgAlleMenuFilter" name="color" value="VelgAlleMenuFilter">
+            </div>
+            
+            <div class="indexFilterDataContainer">
+                <div class="indexSetWidthForButtons"><label for="EgendefinertMenuFilter">Egendefinert</label></div>
+                <input type="radio" id="EgendefinertMenuFilter" name="color" value="EgendefinertMenuFilter">
+            </div>
+
+                <!-- Defines the drop-down search menu -->
+            <div class="indexFilterDataContainer">
+                <label for="fishOptions"></label>
+                <select id="fishOptions" name="fishOptions">
+                    <option value="Sei">Sei</option>
+                    <option value="Flyndre">Flyndre</option>
+                    <option value="Torsk">Torsk</option>
+                    <option value="Makrell">Makrell</option>
+                    <option value="Steinbit">Steinbit</option>
+                </select>
+            </div>
+         </form>   
+    </section>
+    
+        <!-- Defines the button used to open and close the filter menu -->
+    <div class="indexFilterButton centerItem" id="filterButton">&lt;</div>
+</body>
+</html>

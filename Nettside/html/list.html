@@ -1,0 +1,157 @@
+<!DOCTYPE html> <!-- Defines the document type -->
+
+<head>                       <!-- D --> 
+    <title>NINA</title> 
+    <meta charset="utf-8"> <!-- Defines charachter set --> 
+    <meta name="author" content="Martin Glærum">
+    <meta name="description" content="This website does stuff">
+    <link rel="icon" href="../img/icon.png" type="image/x-icon">   <!--  Links to the icon -->
+    <link rel="stylesheet" href="../css/styleList.css" > <!-- Links to css file used for the list file -->
+    <link rel="stylesheet" href="../css/styleGeneral.css" > <!-- Links to css file used for the header -->
+    
+    <script defer src="../javascript/script.js"></script>
+        <!-- Used for the map -->
+</head>
+
+<body>
+        <!-- Header for the website -->
+    <header>
+        <div class="logoHeader">
+            <img src="../img/icon.png" alt="Logo" height="60px">
+            <p class="">Nina</p>
+        </div>
+        <div class="centerItem">
+            <a href="index.html">Kart</a>
+            <img src="../img/mapIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="list.html">Liste</a>
+            <img src="../img/listIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="graph.html">Grafer</a>
+            <img src="../img/graphIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="upload.html">Last opp</a>
+            <img src="../img/uploadIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="dowload.html">Last ned</a>
+            <img src="../img/dowloadIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">Logg inn</div>
+    </header>
+
+        <!-- Search bar for the list of station/riverdata -->
+    <div id="listSearchField">
+        <label for="listSearch"></label>
+        <input type="search" id="listSearch" name="listSearch" placeholder="Søk etter Elv navn eller prosjektnummer:" />
+        <div id="listSearchBottomText"> Bruk filter for å filtrere resultat</div>
+    </div>
+    
+        <!-- Table containing the list of station/riverdata -->
+    <div id="listTable">
+        <table>
+            <thead>
+                <tr>
+                    <th>Stasjon Navn</th>
+                    <th>Kl.</th>
+                    <th>Dato</th>
+                    <th>Prosjektnummer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Row 1, Col 1</td>
+                    <td>Row 1, Col 2</td>
+                    <td>Row 1, Col 3</td>
+                    <td>Row 1, Col 4</td>
+                </tr>
+                <tr>
+                    <td>Row 2, Col 1</td>
+                    <td>Row 2, Col 2</td>
+                    <td>Row 2, Col 3</td>
+                    <td>Row 2, Col 4</td>
+                </tr>
+                <tr>
+                    <td>Row 3, Col 1</td>
+                    <td>Row 3, Col 2</td>
+                    <td>Row 3, Col 3</td>
+                    <td>Row 3, Col 4</td>
+                </tr>
+                <tr>
+                    <td>Row 4, Col 1</td>
+                    <td>Row 4, Col 2</td>
+                    <td>Row 4, Col 3</td>
+                    <td>Row 4, Col 4</td>
+                </tr>
+                <tr>
+                    <td>Row 5, Col 1</td>
+                    <td>Row 5, Col 2</td>
+                    <td>Row 5, Col 3</td>
+                    <td>Row 5, Col 4</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <!-- Defines the filter options at the left side of the page -->
+    <section class="listFilter" id="leftSideFilterMenu">
+        <div class="colorChange listFilterHeader centerItem">Filter for Søk</div>
+
+            <!-- Defines the form for choosing elvedata or stasjonsdata -->
+        <h3>Type data</h3>
+        <form action=" ">
+            <div class="listFilterDataContainer">
+                <div class="listSetWidthForButtons"><label for="Stasjonsdata">Stasjonsdata</label></div>
+                <input type="radio" id="Stasjonsdata" name="color" value="Stasjonsdata">
+            </div>
+            
+            <div class="listFilterDataContainer">
+                <div class="listSetWidthForButtons"><label for="Elvedata">Elvedata</label></div>
+                <input type="radio" id="Elvedata" name="color" value="Elvedata">
+            </div>            
+        </form>
+
+            <!-- Defines the form for choosing a time interval -->
+        <h3>Dato</h3>
+        <form action=" ">
+            <div class="listFilterDataContainer">
+                <label for="FraDato">Fra</label>
+                <input type="date" id="FraDato" name="color" value="FraDato"><br>
+            </div>
+            
+            <div class="listFilterDataContainer">
+                <label for="TilDato">Til</label>
+                <input type="date" id="TilDato" name="color" value="TilDato"><br>
+            </div>            
+        </form>
+
+            <!-- Defines the form for filtering different species of fish -->
+        <h3>Art</h3>
+        <form action=" ">
+            <div class="listFilterDataContainer">
+                <input type="radio" id="VelgAlleMenuFilter" name="color" value="TilDato">
+                <label for="VelgAlleMenuFilter">Velg Alle</label><br>
+            </div>
+            
+                <!-- Defines the drop-down search menu -->
+            <div class="listFilterDataContainer">
+                <input type="radio" id="EgendefinertMenuFilter" name="color" value="EgendefinertMenuFilter">
+                <label for="EgendefinertMenuFilter">Egendefinert</label><br>
+            </div>
+            <div class="listFilterDataContainer">
+                <label for="fishOptions"></label>
+                <select id="fishOptions" name="fishOptions">
+                    <option value="Sei">Sei</option>
+                    <option value="Flyndre">Flyndre</option>
+                    <option value="Torsk">Torsk</option>
+                    <option value="Makrell">Makrell</option>
+                    <option value="Steinbit">Steinbit</option>
+                </select>
+            </div>
+        </form>  
+    </section>
+</body>
+</html>
