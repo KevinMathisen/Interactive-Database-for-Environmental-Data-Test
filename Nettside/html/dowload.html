@@ -1,0 +1,118 @@
+<!DOCTYPE html> <!-- Defines the document type -->
+
+<html lang="en"> <!-- Defines the language for the website --> 
+<head>                       <!-- D --> 
+    <title>NINA</title> 
+    <meta charset="utf-8"> <!-- Defines charachter set --> 
+    <meta name="author" content="Martin Glærum">
+    <meta name="description" content="This website does stuff">
+    <link rel="icon" href="../img/icon.png" type="image/x-icon">   <!--  Links to the icon -->
+    <link rel="stylesheet" href="../css/styleDownload.css" > <!-- Links to css file used for the download file -->
+    <link rel="stylesheet" href="../css/styleGeneral.css" > <!-- Links to css file used for the header -->
+    
+    <script defer src="../javascript/script.js"></script>
+</head>
+
+<body>
+        <!-- Header for the website -->
+    <header>
+        <div class="logoHeader">
+            <img src="../img/icon.png" alt="Logo" height="60px">
+            <p class="">Nina</p>
+        </div>
+        <div class="centerItem">
+            <a href="index.html">Kart</a>
+            <img src="../img/mapIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="list.html">Liste</a>
+            <img src="../img/listIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="graph.html">Grafer</a>
+            <img src="../img/graphIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="upload.html">Last opp</a>
+            <img src="../img/uploadIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="dowload.html">Last ned</a>
+            <img src="../img/dowloadIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">Logg inn</div>
+    </header>
+
+        <!-- Defines the top-text text for the page -->
+    <div>
+        <div id="downloadDataTopText" class="colorChange centerItem">Last ned data</div>
+    </div>
+
+        <!-- Defines the area containing the options for dowloading -->
+    <div class="downloadBody">
+        <div class="downloadDataBox">
+                <!-- Defines the first area, containing options between riverdata and stationdata -->
+            <div class="dowloadBoxGeneral">
+                <h3>Type data</h3>
+                <form action=" ">
+                    <div>
+                        <div class="setWidthForButtonsUpload"><label for="StasjonsdataUpload">Stasjonsdata</label></div>
+                        <input type="radio" id="StasjonsdataUpload" name="color" value="StasjonsdataUpload">
+                    </div>
+                    
+                    <div>
+                        <div class="setWidthForButtonsUpload"><label for="ElvedataUpload">Elvedata</label></div>
+                        <input type="radio" id="ElvedataUpload" name="color" value="ElvedataUpload">
+                    </div>            
+                </form>
+            </div>
+
+                <!-- Defines the second area, containing options between all species or self-specified species -->
+            <div class="dowloadBoxGeneral">
+                <h3>Art</h3>
+                <form action=" ">
+                    <div>
+                        <div class="setWidthForButtonsUpload"><label for="velgAlleArterUpload">Velg alle arter</label></div>
+                        <input type="radio" id="velgAlleArterUpload" name="color" value="velgAlleArterUpload">
+                    </div>
+                    
+                    <div>
+                        <div class="setWidthForButtonsUpload"><label for="egendefinerteArterUpload">Egendefinerte arter</label></div>
+                        <input type="radio" id="egendefinerteArterUpload" name="color" value="egendefinerteArterUpload">
+                    </div>            
+                </form>
+            </div>
+
+                <!-- Defines the first area where you can select which stations to include -->
+            <div class="dowloadBoxGeneral">
+                <p>Stasjoner</p>
+                <div>
+                    <label for="stationOptions"></label>
+                    <select id="stationOptions" name="stationOptions">
+                        <option value="Sei">Sei</option>
+                        <option value="Flyndre">Flyndre</option>
+                        <option value="Torsk">Torsk</option>
+                        <option value="Makrell">Makrell</option>
+                        <option value="Steinbit">Steinbit</option>
+                    </select>
+                </div>
+            </div>
+
+                <!-- Defines the fourth area where you can select which species to include -->
+            <div class="dowloadBoxGeneral">
+                <p>Egendefinerte arter</p>
+                <div>
+                    <label for="artOptions"></label>
+                    <select id="artOptions" name="artOptions">
+                        <option value="Sei">Sei</option>
+                        <option value="Flyndre">Flyndre</option>
+                        <option value="Torsk">Torsk</option>
+                        <option value="Makrell">Makrell</option>
+                        <option value="Steinbit">Steinbit</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+<body>
+</html>

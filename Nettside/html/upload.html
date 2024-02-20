@@ -1,0 +1,71 @@
+<!DOCTYPE html> <!-- Defines the document type -->
+
+<head>                       <!-- D --> 
+    <title>NINA</title> 
+    <meta charset="utf-8"> <!-- Defines charachter set --> 
+    <meta name="author" content="Martin Glærum">
+    <meta name="description" content="This website does stuff">
+    <link rel="icon" href="../img/icon.png" type="image/x-icon">   <!--  Links to the icon -->
+    <link rel="stylesheet" href="../css/styleUpload.css" > <!-- Links to css file used for the upload file -->
+    <link rel="stylesheet" href="../css/styleGeneral.css" > <!-- Links to css file used for the header -->
+    <script defer src="../javascript/script.js"></script>
+</head>
+
+<body>
+        <!-- Header for the website -->
+    <header>
+        <div class="logoHeader">
+            <img src="../img/icon.png" alt="Logo" height="60px">
+            <p class="">Nina</p>
+        </div>
+        <div class="centerItem">
+            <a href="index.html">Kart</a>
+            <img src="../img/mapIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="list.html">Liste</a>
+            <img src="../img/listIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="graph.html">Grafer</a>
+            <img src="../img/graphIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="upload.html">Last opp</a>
+            <img src="../img/uploadIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="dowload.html">Last ned</a>
+            <img src="../img/dowloadIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">Logg inn</div>
+    </header>
+
+        <!-- Defines the area containing files upload options and overview over files selected-->
+    <div class="uploadBody">
+
+            <!--Defines the bos where you click to choose files -->
+        <div class="uploadFilesBox">
+            <img src="../img/uploadCloudIcon.svg" alt="listIcon" height="60px" id="uploadCloudIcon">
+            <p>Dra og slipp filer eller</p>
+            <div id="uploadFilesBoxButton" class="colorChange">Bla gjennom Filer</div>
+        </div>
+
+            <!-- Defines the text under the upload files box -->
+        <div class="uploadFilesBoxText">
+            <p>Maksimal fil størrelse: 10 MB</p>
+            <p>Kun tillatt å laste opp filer av typen: .csv and .xls</p>
+        </div>
+
+            <!-- Defines the overview over files selected -->
+        <div class="uploadFilesUploaded">
+            <p>Filer som er valgt:</p>
+        </div>
+    </div>
+
+        <!-- Defines the upload files button -->     
+    <div class="uploadFilesButton centerItem">
+        <p>Last opp</p>
+    </div>
+</body>
+</html>

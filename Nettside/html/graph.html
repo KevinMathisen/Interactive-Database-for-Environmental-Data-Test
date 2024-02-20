@@ -1,0 +1,152 @@
+<!DOCTYPE html> <!-- Defines the document type -->
+
+<html lang="en"> <!-- Defines the language for the website --> 
+<head>                       <!-- D --> 
+    <title>NINA</title> 
+    <meta charset="utf-8"> <!-- Defines charachter set --> 
+    <meta name="author" content="Martin Glærum">
+    <meta name="description" content="This website does stuff">
+    <link rel="icon" href="../img/icon.png" type="image/x-icon">   <!--  Links to the icon -->
+    <link rel="stylesheet" href="../css/styleGraph.css" > <!-- Links to the css file for the graph page -->
+    <link rel="stylesheet" href="../css/styleGeneral.css" > <!-- Links to css file used for the header -->
+    <script defer src="../javascript/script.js"></script>
+</head>
+
+<body>
+        <!-- Header for the website -->
+    <header>
+        <div class="logoHeader">
+            <img src="../img/icon.png" alt="Logo" height="60px">
+            <p class="">Nina</p>
+        </div>
+        <div class="centerItem">
+            <a href="index.html">Kart</a>
+            <img src="../img/mapIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="list.html">Liste</a>
+            <img src="../img/listIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="graph.html">Grafer</a>
+            <img src="../img/graphIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="upload.html">Last opp</a>
+            <img src="../img/uploadIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">
+            <a href="dowload.html">Last ned</a>
+            <img src="../img/dowloadIcon.svg" alt="listIcon" height="60px" class="headerIcon">
+        </div>
+        <div class="centerItem">Logg inn</div>
+    </header>
+
+    <div class="graphMain">
+        <div class="graphFilter">
+            <div class="graphHeader colorChange centerItem">Filter for Grafer</div>
+
+                <!-- Defines the form for choosing elvedata or stasjonsdata -->
+            <h3>Type data</h3>
+            <form action=" ">
+                <div class="graphFilterDataContainer">
+                    <div class="graphSetWidthForButtons"><label for="graphStasjonsdata">Stasjonsdata</label></div>
+                    <input type="radio" id="graphStasjonsdata" name="color" value="graphStasjonsdata">
+                </div>
+                <div class="graphFilterDataContainer">
+                    <div class="graphSetWidthForButtons"><label for="graphElvedata">Elvedata</label></div>
+                    <input type="radio" id="graphElvedata" name="color" value="graphElvedata">
+                </div>            
+            </form> 
+            
+                <!-- Defines the form for choosing elvedata or stasjonsdata -->
+            <h3>Stasjoner valgt</h3>
+            <div id="graphSearchField">
+                <label for="listSearch"></label>
+                <input type="search" id="graphStationSearchField" name="graphStationSearchField" placeholder="Legg til stasjon" />
+            </div>
+
+                <!-- Defines the form for choosing elvedata or stasjonsdata -->
+            <h3>Art</h3>
+            <form action=" ">
+                <div class="graphFilterDataContainer">
+                    <div class="graphSetWidthForButtons"><label for="graphVelgAlle">Velg Alle</label></div>
+                    <input type="radio" id="graphVelgAlle" name="color" value="graphVelgAlle">
+                </div>
+                
+                <div class="graphFilterDataContainer">
+                    <div class="graphSetWidthForButtons"><label for="graphEgendefinert">Egendefinert</label></div>
+                    <input type="radio" id="graphEgendefinert" name="color" value="graphEgendefinert">
+                </div>
+
+                    <!-- Defines the drop-down search menu -->
+                <div class="graphFilterDataContainer">
+                    <label for="fishOptions"></label>
+                    <select id="fishOptions" name="fishOptions">
+                        <option value="Sei">Sei</option>
+                        <option value="Flyndre">Flyndre</option>
+                        <option value="Torsk">Torsk</option>
+                        <option value="Makrell">Makrell</option>
+                        <option value="Steinbit">Steinbit</option>
+                    </select>
+                </div>
+            </form>
+
+                <!-- Defines the form for choosing elvedata or stasjonsdata -->
+            <h3>Fordeling av arter</h3>
+            <div class="graphFilterDataContainer">
+                <div class="graphSetWidthForButtons"><label for="graphVis">Vis</label></div>
+                <input type="checkbox" id="graphVis" name="color" value="graphVis">
+            </div>
+            <p>Y-akse verdi</p>
+            <div class="graphFilterDataContainer">
+                <div class="graphSetWidthForButtons"><label for="graphAntallPerArt">Antall per art</label></div>
+                <input type="radio" id="graphAntallPerArt" name="color" value="graphAntallPerArt">
+            </div>
+            <div class="graphFilterDataContainer">
+                <div class="graphSetWidthForButtons"><label for="graphAntMinPerArt">Ant/min per art</label></div>
+                <input type="radio" id="graphAntMinPerArt" name="color" value="graphAntMinPerArt">
+            </div>
+
+            <p>Diagram type</p>
+            <div class="graphFilterDataContainer">
+                <div class="graphSetWidthForButtons"><label for="graphStolpediagram">Stolpediagram</label></div>
+                <input type="radio" id="graphStolpediagram" name="color" value="graphStolpediagram">
+            </div>
+            <div class="graphFilterDataContainer">
+                <div class="graphSetWidthForButtons"><label for="graphSektordiagram">Sektordiagram</label></div>
+                <input type="radio" id="graphSektordiagram" name="color" value="graphSektordiagram">
+            </div>
+
+                    <!-- Defines the form for choosing elvedata or stasjonsdata -->
+            <h3>Fordeling av lengde</h3>
+            <div class="graphFilterDataContainer">
+                <div class="graphSetWidthForButtons"><label for="graphVis2">Vis</label></div>
+                <input type="checkbox" id="graphVis2" name="color" value="graphVis2">
+            </div>
+            <p>Intervall i mm</p>
+            <div id="graphSearchField2" class="searchField">
+                <label for="graphStationSearchField2"></label>
+                <input type="search" id="graphStationSearchField2" name="graphStationSearchField2" placeholder="mm" />
+            </div>
+            <p>Diagramtype</p>
+            <div class="graphFilterDataContainer">
+                <div class="graphSetWidthForButtons"><label for="graphHistogram">Histogram</label></div>
+                <input type="radio" id="graphHistogram" name="color" value="graphHistogram">
+            </div>
+            <div class="graphFilterDataContainer">
+                <div class="graphSetWidthForButtons"><label for="graphBoksplott">Boksplott</label></div>
+                <input type="radio" id="graphBoksplott" name="color" value="graphBoksplott">
+            </div>
+
+
+        </div>
+        <div class="graphBox1">
+            <h3>FORDELING AV ARTER</h3>
+        </div>
+        <div class="graphBox2">
+            <h3>FORDELING AV LENGDE</h3>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+/* ----------------- VARIABLES -----------------*/
+
+:root {
+    --MCOLOR: #435768;  /* Main color */
+    --SCOLOR: white;    /* Secondary color */
+    --TCOLOR: rgb(133, 133, 133);    /* Third color */
+}
+
+/* ----------------- FILTERMENU -----------------*/
+
+.indexFilter {
+    position: fixed;
+    width: 300px;
+    height: calc(100vh - 80px);         /* Height of the page subtracted by height of the header*/
+    top: 80px;                          /* Positions the menu under the header */
+    background-color: var(--SCOLOR);
+    border-right: 5px solid black;
+    transition: transform 1.5s ease;    /* Animation for the menu */
+    z-index: 1000;                      /* Makes the menu overlap the map */
+}
+
+.indexFilterButton {
+    position: fixed;
+    left: 300px;
+    top: 50vh;
+    height: 80px;
+    width: 30px;
+    background-color: var(--SCOLOR);
+    border-right: 3px solid black;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    border-radius: 0 1rem 1rem 0;
+    font-size: 2rem;
+    font-weight: lighter;
+    transition: transform 1.5s ease;    /* Animation for the button */
+    z-index: 900;                       /* Makes the button overlap the map, but not overlap the filter */   
+}
+
+.indexFilterHeader {
+    height: 60px;
+    font-size: 2.5rem;
+}
+
+.indexFilterDataContainer {
+    font-size: 1.2rem;
+    padding: 0 0 0.5rem 1rem;
+}
+
+.indexFilterButton:hover {
+    background-color: var(--TCOLOR);
+}
+
+.indexFilterButton.active {
+    transform: translateX(-300px);  /* Specifies distance the animation moves the filter */
+}
+
+.indexFilter.active {
+    transform: translateX(-300px);  /* Specifies distance the animation moves the button */
+}
+
+/* ----------------- OTHER -----------------*/
+
+h3 {
+    color: var(--MCOLOR);
+    font-size: 1.5rem;
+    padding-left: 1rem;
+}
+
+.indexSetWidthForButtons { /* Used to position the radio buttons */
+    width: 120px;
+    display: inline-block;
+}
+
+
+#map { 
+    height: calc(100vh - 80px); 
+    width: 100%;
+}
